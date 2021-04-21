@@ -186,7 +186,6 @@ const DrawerScreen = () => (
     drawerContent={props => <DrawerContent {...props} />}>
     <Drawer.Screen name="Home" component={TabsScreen} />
     <Drawer.Screen name="Profile" component={ProfileStackScreen} />
-    <Drawer.Screen name="Logout" component={LogoutStackScreen} />
   </Drawer.Navigator>
 );
 

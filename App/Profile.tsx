@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, StyleSheet, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+} from 'react-native';
 import {AuthContext} from './context';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 //import {add} from 'react-native-reanimated';
@@ -14,6 +20,11 @@ export const Profile = ({navigation}) => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [pin, setPin] = useState('');
+
+  const phoneNumber = (value: string) =>
+    value && !/^(0|[1-9][0-9]{9})$/i.test(value)
+      ? 'Invalid phone number, must be 10 digits'
+      : undefined;
 
   return (
     <View style={styles.container}>
@@ -87,6 +98,11 @@ export const Profile = ({navigation}) => {
             onChangeText={setPin}
           />
         </View>
+        <View style={styles.button}>
+          <TouchableOpacity style={styles.submitButton}>
+            <Text style={{fontSize: 20, color: '#17202A'}}>Submit</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -128,6 +144,18 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     paddingHorizontal: 20,
     color: '#05375a',
+  },
+  button: {
+    alignItems: 'center',
+  },
+  submitButton: {
+    marginTop: 30,
+    backgroundColor: '#3498DB',
+    width: 150,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 15,
   },
 });
 

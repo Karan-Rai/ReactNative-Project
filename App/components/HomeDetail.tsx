@@ -6,8 +6,9 @@ const {width, height} = Dimensions.get('window');
 const HomeDetail: React.FC<HomeDetailprops> = ({item}) => {
   return (
     <View style={styles.cardView}>
-      <Text style={styles.id}>{item.id}</Text>
-      <Text style={styles.title}>{item.login}</Text>
+      <Text style={styles.id}>
+        {item.id} {item.login}
+      </Text>
       <Image style={styles.image} source={{uri: item.avatar_url}} />
     </View>
   );

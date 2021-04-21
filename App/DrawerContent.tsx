@@ -3,7 +3,9 @@ import {View, Text, StyleSheet} from 'react-native';
 import {Drawer} from 'react-native-paper';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {AuthContext} from './context';
 export function DrawerContent(props) {
+  const {signOut} = React.useContext(AuthContext);
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>
@@ -29,11 +31,11 @@ export function DrawerContent(props) {
             />
             <DrawerItem
               icon={({color, size}) => (
-                <Icon name="bookmark-outline" color={color} size={size} />
+                <Icon name="exit-to-app" color={color} size={size} />
               )}
-              label="Logout"
+              label="Sign Out"
               onPress={() => {
-                props.navigation.navigate('Logout');
+                signOut();
               }}
             />
           </Drawer.Section>
